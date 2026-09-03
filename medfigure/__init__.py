@@ -1,6 +1,6 @@
 """
 medfigure: Publication-ready medical SCI figure generation library & skill.
-Synthesized from SciencePlots, scipilot-figure-skill, ggsci, and adjustText.
+Synthesized from SciencePlots, scipilot-figure-skill, ggsci, adjustText, and CSdaw/ggprism.
 """
 
 from medfigure.style import (
@@ -11,6 +11,10 @@ from medfigure.style import (
     PALETTE_JCO,
     PALETTE_NATURE,
     PALETTE_OKABE_ITO,
+)
+from medfigure.prism import (
+    set_prism_style,
+    PRISM_PALETTES,
 )
 from medfigure.layout import (
     add_panel_labels,
@@ -25,10 +29,16 @@ from medfigure.annotation import (
 from medfigure.qa import (
     audit_medical_figure,
 )
+from medfigure.recipes.prism_plots import (
+    plot_prism_bar_dots,
+    add_prism_bracket,
+)
 
-__version__ = "2.0.0"
+__version__ = "2.1.0"
 __all__ = [
     "set_medical_style",
+    "set_prism_style",
+    "PRISM_PALETTES",
     "PALETTE_NEJM",
     "PALETTE_LANCET",
     "PALETTE_JAMA",
@@ -42,4 +52,6 @@ __all__ = [
     "smart_repel_text",
     "add_significance_bracket",
     "audit_medical_figure",
+    "plot_prism_bar_dots",
+    "add_prism_bracket",
 ]

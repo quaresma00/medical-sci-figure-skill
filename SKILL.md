@@ -15,8 +15,8 @@ Before writing any plotting code, determine chart type strictly by **data topolo
 
 | Data Shape | Clinical / Biological Intent | Mandatory Chart Type | STRICTLY FORBIDDEN |
 | :--- | :--- | :--- | :--- |
-| **1 Continuous + 1 Categorical ($n < 10$)** | Compare biomarker expression in small cohorts | **Boxplot / Violin + Overlaid Jitter Scatter** | **Dynamite Bar (Mean + SE)** |
-| **1 Continuous + 1 Categorical ($n \ge 10$)** | Compare distribution across clinical groups | **Boxplot / Violin with quartile whiskers** | Standalone bar chart |
+| **1 Continuous + 1 Categorical ($n < 10$)** (qPCR, WB, ELISA, small mice cohorts) | Compare biomarker/mRNA expression in small replicates | **Superimposed Dot-Bar (Open/Tint Bar + SEM + Individual Dots)** or **Dot Plot with Mean line** | **Pure Dynamite Bar (no dots) OR Boxplot for $n \le 5$ (meaningless quartiles)** |
+| **1 Continuous + 1 Categorical ($n \ge 10$)** (Clinical cohorts, single-cell) | Compare distribution across clinical groups | **Boxplot / Violin with quartile whiskers** | Standalone bar chart |
 | **Time-to-event (Survival)** | Compare survival trajectories (PFS / OS) | **Step curve + synchronized Risk Table** | Line chart without risk numbers |
 | **Odds / Hazard Ratios across Subgroups** | Clinical trial subgroup or Meta-analysis | **Forest plot (log scale, vertical null line)** | Grouped bar chart |
 | **2 Continuous variables** | Correlation / Biomarker titration curve | **Scatter plot + regression fit + exact $r/p$** | Connected line plot (unless time series) |
