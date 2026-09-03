@@ -1,15 +1,15 @@
 """
-Demo: Multi-panel figure with pixel-perfect A, B label alignment.
+Example 03: Multi-panel composite with pixel-perfect A, B label alignment.
+Demonstrates automated QA and layout finalized spacing.
 """
-import matplotlib.pyplot as plt
-import numpy as np
 import sys
 import os
+import numpy as np
+import matplotlib.pyplot as plt
 
-# Allow running directly from repo root
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from medfigure import set_medical_style, add_panel_labels, PALETTE_NEJM, audit_medical_figure
+from medfigure import set_medical_style, add_panel_labels, PALETTE_NEJM, audit_medical_figure, create_outside_legend
 
 def main():
     set_medical_style(journal="nejm")
@@ -17,7 +17,7 @@ def main():
     # Double column width: 175mm -> 6.89 in
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(6.89, 2.8), dpi=300)
     
-    # Panel A: Time-course curve
+    # Panel A: Time-course curve with outside legend
     time = np.linspace(0, 24, 25)
     ax1.plot(time, np.exp(-0.08 * time), label='Standard of Care', color=PALETTE_NEJM[1], lw=1.2)
     ax1.plot(time, np.exp(-0.04 * time), label='Combination Therapy', color=PALETTE_NEJM[0], lw=1.2, ls='--')
@@ -37,8 +37,12 @@ def main():
     
     plt.tight_layout()
     audit_medical_figure(fig)
-    plt.savefig("multipanel_demo.pdf", bbox_inches='tight')
-    print("Saved multipanel_demo.pdf")
+    
+    out_pdf = "demo_03_multipanel.pdf"
+    out_png = "demo_03_multipanel.png"
+    plt.savefig(out_pdf, bbox_inches='tight')
+    plt.savefig(out_png, dpi=300, bbox_inches='tight')
+    print(f"Saved: {out_png} and {out_pdf}")
 
 if __name__ == "__main__":
     main()

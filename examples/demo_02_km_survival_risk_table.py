@@ -1,9 +1,10 @@
 """
-Demo: Kaplan-Meier Survival Curve with Number at Risk Table.
+Example 02: Kaplan-Meier Survival Curve with Synchronized Number at Risk Table.
+Standard oncology and clinical trial presentation.
 """
-import numpy as np
 import sys
 import os
+import numpy as np
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
@@ -30,8 +31,11 @@ def main():
         figsize=(4.72, 3.8)
     )
     
-    fig.savefig("km_survival_demo.pdf", bbox_inches='tight')
-    print("Saved km_survival_demo.pdf")
+    out_pdf = "demo_02_km_survival.pdf"
+    out_png = "demo_02_km_survival.png"
+    fig.savefig(out_pdf, bbox_inches='tight')
+    fig.savefig(out_png, dpi=300, bbox_inches='tight')
+    print(f"Saved: {out_png} and {out_pdf}")
 
 if __name__ == "__main__":
     main()
